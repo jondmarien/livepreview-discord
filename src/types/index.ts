@@ -10,6 +10,8 @@ export interface FileTypeInfo {
   mimeType: string;
   displayName: string;
   icon: string;
+  isSupported: boolean;
+  type: string;
 }
 
 export interface GlobalState {

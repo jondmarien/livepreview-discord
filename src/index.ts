@@ -1,6 +1,13 @@
 import definePlugin from "@utils/types";
 import { ContentCache } from "./services/ContentCache";
 
+import { contextMenuPatch } from "./patches/ContextMenu";
+import {
+  addMessageAccessory,
+  removeMessageAccessory,
+} from "@api/MessageAccessories";
+import { PreviewAccessory } from "./components/PreviewAccessory";
+
 export default definePlugin({
   name: "TextFilePreview",
   description:
@@ -11,17 +18,18 @@ export default definePlugin({
       id: 96714019636785152n,
     },
   ],
-
-  // Initialize services on plugin start
   start() {
-    // ContentCache is singleton, no initialization needed
-    // State store is already created
+    addMessageAccessory("live-preview", PreviewAccessory);
   },
 
   stop() {
+    removeMessageAccessory("live-preview");
     // Clear cache on plugin stop
     ContentCache.getInstance().clear();
-    // Reset state if needed, though Zustand store persists in module scope usually
+  },
+
+  contextMenus: {
+    "message-attachment-context": contextMenuPatch,
   },
 });
 

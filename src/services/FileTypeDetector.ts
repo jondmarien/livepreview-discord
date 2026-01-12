@@ -6,36 +6,48 @@ const supportedTypes: Record<string, FileTypeInfo> = {
     mimeType: "text/markdown",
     displayName: "Markdown",
     icon: "markdown",
+    isSupported: true,
+    type: "Markdown",
   },
   ".txt": {
     extension: ".txt",
     mimeType: "text/plain",
     displayName: "Text",
     icon: "text",
+    isSupported: true,
+    type: "Text",
   },
   ".json": {
     extension: ".json",
     mimeType: "application/json",
     displayName: "JSON",
     icon: "json",
+    isSupported: true,
+    type: "JSON",
   },
   ".yaml": {
     extension: ".yaml",
     mimeType: "text/yaml",
     displayName: "YAML",
     icon: "yaml",
+    isSupported: true,
+    type: "YAML",
   },
   ".yml": {
     extension: ".yaml",
     mimeType: "text/yaml",
     displayName: "YAML",
     icon: "yaml",
+    isSupported: true,
+    type: "YAML",
   },
   ".log": {
     extension: ".log",
     mimeType: "text/plain",
     displayName: "Log",
     icon: "log",
+    isSupported: true,
+    type: "Log",
   },
 };
 
@@ -74,5 +86,7 @@ export function detectFileType(
     mimeType: mimeType || "text/plain",
     displayName: "Text",
     icon: "text",
+    isSupported: false,
+    type: "Text",
   };
 }

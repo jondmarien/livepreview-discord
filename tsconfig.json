@@ -1,24 +1,38 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "lib": ["ES2020", "DOM"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "moduleResolution": "bundler",
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@services/*": ["src/services/*"],
-      "@store/*": ["src/store/*"],
-      "@types/*": ["src/types/*"],
       "@utils/*": ["Vencord/src/utils/*"],
+      "@webpack": ["Vencord/src/webpack/webpack"],
+      "@webpack/common": ["Vencord/src/webpack/common"],
+      "@webpack/patcher": ["Vencord/src/webpack/patchWebpack"],
       "@webpack/*": ["Vencord/src/webpack/*"],
-      "@api/*": ["Vencord/src/api/*"]
+      "@api/*": ["Vencord/src/api/*"],
+      "@components/*": ["Vencord/src/components/*"],
+      "@services/*": ["Vencord/src/services/*"],
+      "@store/*": ["Vencord/src/store/*"],
+      "@types/*": ["Vencord/src/types/*"],
+      "@plugins/*": ["Vencord/src/plugins/*"],
+      "@vencord/discord-types": [
+        "Vencord/packages/discord-types/src/index.d.ts"
+      ]
     },
     "jsx": "react-jsx",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "Vencord/src/userplugins",
+    "Vencord/src/**/*",
+    "Vencord/packages/**/*"
+  ]
 }
