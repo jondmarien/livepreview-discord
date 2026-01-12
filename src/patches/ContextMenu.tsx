@@ -1,6 +1,6 @@
 import { Menu, React } from "@webpack/common";
 import { detectFileType } from "../services/FileTypeDetector";
-import { useGlobalState } from "../store/globalState";
+import { PreviewHandler } from "../services/PreviewHandler";
 import type { NavContextMenuPatchCallback } from "@api/ContextMenu";
 
 function findInReactTree(tree: any, filter: (node: any) => boolean): any {
@@ -9,6 +9,7 @@ function findInReactTree(tree: any, filter: (node: any) => boolean): any {
 
   if (Array.isArray(tree)) {
     for (const child of tree) {
+      if (!child) continue;
       const found = findInReactTree(child, filter);
       if (found) return found;
     }
@@ -23,8 +24,8 @@ function findInReactTree(tree: any, filter: (node: any) => boolean): any {
 }
 
 export const contextMenuPatch: NavContextMenuPatchCallback = (
-  children,
-  ...args
+  children: Array<React.ReactElement | null>,
+  ...args: any[]
 ) => {
   const [props] = args; // Usually props or { attachment, ... }
   const attachment = props?.attachment;
@@ -39,12 +40,7 @@ export const contextMenuPatch: NavContextMenuPatchCallback = (
       id="preview-text-file"
       label={`Preview ${fileInfo.type}`}
       action={() => {
-        console.log(
-          "[TextFilePreview] Context menu preview requested",
-          attachment.filename
-        );
-        useGlobalState.setState({ isLoading: true });
-        setTimeout(() => useGlobalState.setState({ isLoading: false }), 1000);
+        PreviewHandler.getInstance().handlePreview(attachment);
       }}
     />
   );

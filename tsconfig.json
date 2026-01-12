@@ -32,7 +32,6 @@
   "exclude": [
     "node_modules",
     "Vencord/src/userplugins",
-    "Vencord/src/**/*",
     "Vencord/packages/**/*"
   ]
 }
