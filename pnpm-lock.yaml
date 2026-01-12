@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      dompurify:
+        specifier: ^3.3.1
+        version: 3.3.1
       marked:
         specifier: ^11.0.0
         version: 11.2.0
@@ -16,7 +19,7 @@ importers:
         version: 1.30.0
       zustand:
         specifier: ^4.4.0
-        version: 4.5.7(react@19.2.3)
+        version: 4.5.7(@types/react@19.2.8)(react@19.2.3)
     devDependencies:
       '@types/node':
         specifier: latest
@@ -24,6 +27,12 @@ importers:
       '@types/prismjs':
         specifier: latest
         version: 1.26.5
+      '@types/react':
+        specifier: ^19.2.8
+        version: 19.2.8
+      react:
+        specifier: ^19.2.3
+        version: 19.2.3
       typescript:
         specifier: ^5.0.0
         version: 5.9.3
@@ -35,6 +44,18 @@ packages:
 
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
+
+  '@types/react@19.2.8':
+    resolution: {integrity: sha512-3MbSL37jEchWZz2p2mjntRZtPt837ij10ApxKfgmXCTuHWagYg7iA5bqPw6C8BMPfwidlvfPI/fxOc42HLhcyg==}
+
+  '@types/trusted-types@2.0.7':
+    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+
+  csstype@3.2.3:
+    resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
+
+  dompurify@3.3.1:
+    resolution: {integrity: sha512-qkdCKzLNtrgPFP1Vo+98FRzJnBRGe4ffyCea9IwHB1fyxPOeNTHpLKYGd4Uk9xvNoH0ZoOjwZxNptyMwqrId1Q==}
 
   marked@11.2.0:
     resolution: {integrity: sha512-HR0m3bvu0jAPYiIvLUUQtdg1g6D247//lvcekpHO1WMvbwDlwSkZAX9Lw4F4YHE1T0HaaNve0tuAWuV1UJ6vtw==}
@@ -85,6 +106,19 @@ snapshots:
 
   '@types/prismjs@1.26.5': {}
 
+  '@types/react@19.2.8':
+    dependencies:
+      csstype: 3.2.3
+
+  '@types/trusted-types@2.0.7':
+    optional: true
+
+  csstype@3.2.3: {}
+
+  dompurify@3.3.1:
+    optionalDependencies:
+      '@types/trusted-types': 2.0.7
+
   marked@11.2.0: {}
 
   prismjs@1.30.0: {}
@@ -99,8 +133,9 @@ snapshots:
     dependencies:
       react: 19.2.3
 
-  zustand@4.5.7(react@19.2.3):
+  zustand@4.5.7(@types/react@19.2.8)(react@19.2.3):
     dependencies:
       use-sync-external-store: 1.6.0(react@19.2.3)
     optionalDependencies:
+      '@types/react': 19.2.8
       react: 19.2.3
